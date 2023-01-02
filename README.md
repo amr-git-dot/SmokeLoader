@@ -133,13 +133,13 @@ Stopping there, Now our way to the second stage is clear dumping it from the mem
 
 ![error loading image](Pics/dump.png)
 
-## Second stage :
 In this Stage there is a lot of fun happening there is a heavy anti-analysis going on here so let's start:
 
 from the first look, there is a big welcome from the malware that you will notice which is starting with the use of 
 "Opaque Predicates" is a technique used to fool the disassembler to assemble the file in the wrong way.
 So you need to manually guide the assembler where to start assembling or write a script to replace the useless jumps used to do this kind of obfuscation.
 
+## Second stage :
 ![error loading image](Pics/obf.png)
 
 Following along with the code you will find it getting the BEP structure for checking if there is a debugger presented
@@ -166,64 +166,67 @@ After that, the only Advanced trick left is using a custome copy of "ntdll.dll" 
 From this point, the rest of the analysis is very straightforward it's just using the resolved APIs to check for hard-coded values that will indicate it's running inside VM and hard-coded process names to indicate it's being debugged.
 
 Here is a list of imported APIs after deobfuscation:
-		ntdll.dll
-			LdrLoadDll 
-			NtClose 
-			NtTerminateProcess 
-			RtlInitUnicodeString 
-			RtlMoveMemory 
-			RtlZeroMemory 
-			NtAllocateVirtualMemory 
-			NtCreateSection 
-			NtEnumerateKey 
-			NtFreeVirtualMemory 
-			NtMapViewOfSection 
-			NtOpenKey 
-			NtOpenProcess 
-			NtQueryInformationProcess 
-			NtQueryKey 
-			NtQuerySystemInformation 
-			NtUnmapViewOfSection 
-			NtWriteVirtualMemory 
-			RtlDecompressBuffer 
-			towlower 
-			wcsstr 
-		kernel32.dll
-			CopyFileW 
-			CreateEventW 
-			CreateFileMappingW 
-			CreateThread 
-			DeleteFileW 
-			ExpandEnvironmentStringsW 
-			GetModuleFileNameA 
-			GetModuleFileNameW 
-			GetModuleHandleA 
-			GetSystemDirectoryA 
-			GetTempFileNameW 
-			GetTempPathW 
-			GetVolumeInformationA 
-			LocalAlloc 
-			LocalFree 
-			MapViewOfFile 
-			Sleep 
-			WaitForSingleObject 
-			lstrcatW 
-			lstrcmpA 
-		user32.dll
-			EnumChildWindows 
-			EnumPropsA 
-			GetForegroundWindow 
-			GetKeyboardLayoutList 
-			GetShellWindow 
-			GetWindowThreadProcessId 
-			SendMessageA 
-			SendNotifyMessageA 
-			SetPropA 
-			wsprintfW 
-		advapi32.dll
-			GetTokenInformation 
-			OpenProcessToken 
+
+	ntdll.dll
+	 	LdrLoadDll 
+	 	NtClose 
+		NtTerminateProcess 
+		RtlInitUnicodeString 
+		RtlMoveMemory 
+		RtlZeroMemory 
+		NtAllocateVirtualMemory 
+		NtCreateSection 
+		NtEnumerateKey 
+		NtFreeVirtualMemory 
+		NtMapViewOfSection 
+		NtOpenKey 
+		NtOpenProcess 
+		NtQueryInformationProcess 
+		NtQueryKey 
+		NtQuerySystemInformation 
+		NtUnmapViewOfSection 
+		NtWriteVirtualMemory 
+		RtlDecompressBuffer 
+		towlower 
+		wcsstr 
+	kernel32.dll
+		CopyFileW 
+		CreateEventW 
+		CreateFileMappingW 
+		CreateThread 
+		DeleteFileW 
+		ExpandEnvironmentStringsW 
+		GetModuleFileNameA 
+		GetModuleFileNameW 
+		GetModuleHandleA 
+		GetSystemDirectoryA 
+		GetTempFileNameW 
+		GetTempPathW 
+		GetVolumeInformationA 
+		LocalAlloc 
+		LocalFree 
+		MapViewOfFile 
+		Sleep 
+		WaitForSingleObject 
+		lstrcmpA 
+		lstrcatW 
+	user32.dll
+		EnumChildWindows 
+		EnumPropsA 
+		GetForegroundWindow 
+		GetKeyboardLayoutList 
+		GetShellWindow 
+		GetWindowThreadProcessId 
+		SendMessageA 
+		SendNotifyMessageA 
+		SetPropA 
+		wsprintfW 
+	advapi32.dll
+		GetTokenInformation 
+		OpenProcessToken 
 		shell32.dll
+
+
 
 And here is a list of the processes to check if it's running:
 
