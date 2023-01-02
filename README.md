@@ -133,6 +133,7 @@ Stopping there, Now our way to the second stage is clear dumping it from the mem
 
 ![error loading image](Pics/dump.png)
 
+## Second stage :
 In this Stage there is a lot of fun happening there is a heavy anti-analysis going on here so let's start:
 
 from the first look, there is a big welcome from the malware that you will notice which is starting with the use of 
