@@ -74,7 +74,7 @@ After that, by ignoring the unreachable code we will reach a call to a function 
 
 ![error loading image](Pics/dec.png)
 
-Going inside it we will notice a huge amount of mathematical operations (shifting, adding, XORing...) which will be a sign that this function is decrypting the payload that is written to the allocated memory and that the constant value passed may be the description key.
+Going inside it we will notice a huge amount of mathematical operations (shifting, adding, XORing...) which will be a sign that this function is decrypting the payload that is written to the allocated memory and that the constant value passed may be the decryption key.
 
 ![error loading image](Pics/decrypt.png)
 
