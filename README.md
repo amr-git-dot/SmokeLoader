@@ -161,9 +161,12 @@ along with the decryption and the encryption of the functions and investigating 
 
 ![error loading image](Pics/hashes.png)
 
-After that, the only Advanced trick left is using a custome copy of "ntdll.dll" to resolve its APIs so it can bypass the hooking from Security solutions.
+After that, the only Advanced trick left is using a custome copy of "ntdll.dll" to resolve its APIs so it can bypass the hooking from Security solutions and it's doing that in the same way of resolving the needed APIs then copying a new version of "ntdll.dll" for it self.
 
-From this point, the rest of the analysis is very straightforward it's just using the resolved APIs to check for hard-coded values that will indicate it's running inside VM and hard-coded process names to indicate it's being debugged.
+From this point, the rest of the analysis is very straightforward and following the same pattern it's just using the resolved APIs to check for hard-coded values that will indicate it's running inside VM and hard-coded process names to indicate it's being debugged.
+
+	note:
+		the rest of the analysis is repeatable actions which will make the report very self repeating here is the end
 
 Here is a list of imported APIs after deobfuscation:
 
